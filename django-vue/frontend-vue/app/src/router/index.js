@@ -7,7 +7,7 @@ import Logout from '@/views/Logout'
 import ListBooks from '@/components/Books/List'
 import EditBook from'@/components/Books/Edit'
 import Experiments from '@/components/Experiments'
-import Cases from '@/components/Work/Cases'
+//import Cases from '@/components/Work/Cases'
 
 Vue.use(Router)
 
@@ -49,6 +49,11 @@ export default new Router({
       path: '/cases',
       name: 'Cases',
       component: Cases
-    }
+    },
+    {
+      path: '/cases/edit/:id',
+      name: 'EditCases',
+      component: EditCases
+    },
   ]
 })

@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <h1>Edit Book Info</h1>
+    <h1>Edit Caso Info</h1>
     <form>
       <v-text-field
         v-model="caso.name"
@@ -43,50 +43,43 @@ export default {
   data () {
     return {
       name: "",
-      author: "",
-      description: "",
-      book: {}
+ 
+      caso: {}
     }
   },
   computed: {
     nameErrors () {
       const errors = []
-      if (!this.$v.book.name.$dirty) return errors
-      !this.$v.book.name.maxLength && errors.push('Name must be at most 100 characters long')
-      !this.$v.book.name.required && errors.push('Name is required.')
-      return errors
-    },
-    authorErrors () {
-      const errors = []
-      if (!this.$v.book.author.$dirty) return errors
-      !this.$v.book.author.required && errors.push('Author is required')
+      if (!this.$v.caso.name.$dirty) return errors
+      !this.$v.caso.name.maxLength && errors.push('Name must be at most 100 characters long')
+      !this.$v.caso.name.required && errors.push('Name is required.')
       return errors
     },
     descriptionErrors () {
       const errors = []
-      if (!this.$v.book.description.$dirty) return errors
-      !this.$v.book.description.required && errors.push('Description is required')
+      if (!this.$v.caso.description.$dirty) return errors
+      !this.$v.caso.description.required && errors.push('Description is required')
       return errors
     },
   },
   methods: {
-    getBookInfo() {
+    getCaseInfo() {
       axios
         .request({
           baseURL: "http://localhost:8000",
           method: "get",
-          url: `/api/books/get/${this.$route.params.id}/`
+          url: `/api/cases/get/${this.$route.params.id}/`
         })
         .then(res => {
-          this.book = res.data
+          this.caso = res.data
           console.log(res)
         });
     },
     submit () {
       axios
         .put(
-          `http://localhost:8000/api/books/edit/${this.$route.params.id}/`,
-          this.book, 
+          `http://localhost:8000/api/work/edit/${this.$route.params.id}/`,
+          this.caso, 
           {
             headers: {
               Authorization: `Token ${this.$session.get("token")}`
@@ -94,13 +87,14 @@ export default {
           }
         )
         .then(res => {
-          route.push('/books/')
+          route.push('/cases/')
           console.log(res)
         });
     },
     clear () {
-      route.push('/books/')
+      route.push('/cases/')
     },
   }
+}
 }
 </script>

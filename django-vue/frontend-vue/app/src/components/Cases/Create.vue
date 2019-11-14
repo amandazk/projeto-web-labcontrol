@@ -13,7 +13,7 @@
 
       <v-card>
         <v-card-title>
-          <span class="headline">Adicionar Livros</span>
+          <span class="headline">Adicionar Caso</span>
         </v-card-title>
         <v-card-text>
           <v-container>
