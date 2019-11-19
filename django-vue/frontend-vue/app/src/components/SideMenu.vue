@@ -5,7 +5,7 @@
     :mini-variant.sync="mini"
     :clipped="$vuetify.breakpoint.lgAndUp"
   >
-    <v-list-item>
+    <!-- <v-list-item>
       <v-list-item-avatar>
         <v-img src="https://randomuser.me/api/portraits/men/85.jpg"></v-img>
       </v-list-item-avatar>
@@ -15,7 +15,7 @@
       <v-btn icon @click.stop="mini = !mini">
         <v-icon>mdi-chevron-left</v-icon>
       </v-btn>
-    </v-list-item>
+    </v-list-item> -->
     <v-divider></v-divider>
 
     <v-list dense>
@@ -54,13 +54,19 @@ export default {
       user: {},
       items: [
         { title: "Home", icon: "mdi-home-city", endpoint: '/' },
-        { title: "My Account", icon: "mdi-account", endpoint: '/user' },
-        { title: "Users", icon: "mdi-account-group", endpoint: '/users' },
-        { title: "Books", icon: "mdi-library-books", endpoint: '/books'},
-        { title: "Experiments", icon: "mdi-chart-pie", endpoint: '/experiments'}
+        // { title: "My Account", icon: "mdi-account", endpoint: '/user' },
+        // { title: "Users", icon: "mdi-account-group", endpoint: '/users' },
+        // { title: "Books", icon: "mdi-library-books", endpoint: '/books'},
+        // { title: "Experiments", icon: "mdi-chart-pie", endpoint: '/experiments'},
+        { title: "Visualizar Casos", icon: "mdi-folder-lock", endpoint: '/listcases'},
+        { title: "Máquinas", icon: "mdi-laptop-windows", endpoint: '/machines'}
+
+
+
       ],
       items_logged: [
-        { title: "Logout", icon: "mdi-logout", endpoint: '/logout'}
+        { title: "Logout", icon: "mdi-logout", endpoint: '/logout'},
+        { title: "Adicionar Casos", icon: "mdi-clippy", endpoint: '/cases'}
       ]
     };
   },

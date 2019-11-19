@@ -1,20 +1,22 @@
 <template>
   <v-container>
-      <div v-for="book in books" v-bind:key="book.id">
-        <p>{{book.name}}</p>
-        <p>{{book.author}}</p>
-        <p>{{book.description}}</p>
-        <p>{{book.genre_name}}</p>
+      <div v-for="caso in casos" v-bind:key="caso.id">
+        <p>{{caso.name}}</p>
+        <p>{{caso.created}}</p>
+        <p>{{caso.description}}</p>
+        <p>{{caso.problem}}</p>
+        <p>{{caso.machine}}</p>
+
         
         <v-btn class="ma-2" text icon color="red lighten-2">
-          <v-icon class="delete" @click="deleteBook(book)"></v-icon>
+          <v-icon class="delete" @click="deleteCase(caso)"></v-icon>
         </v-btn>
         <v-btn class="ma-2" text icon color="green">
-          <v-icon class="edit" @click="editBook(book)"></v-icon>
+          <v-icon class="edit" @click="editCase(caso)"></v-icon>
         </v-btn>
         <v-divider></v-divider>
       </div>
-      <CreateBooks @updateBooks="all"></CreateBooks>
+      <CreateCases @updateCases="all"></CreateCases>
   </v-container>
 </template>
 
@@ -22,17 +24,17 @@
 <script>
 import axios from "axios";
 import router from "@/router/"
-import CreateBooks from "./Create";
+import CreateCases from "./Create";
 
 export default {
-  name: "ListBooks",
+  name: "ListCases",
   data() {
     return {
-      books: [],
+      casos: [],
     };
   },
   components: {
-    CreateBooks: CreateBooks,
+    CreateCases: CreateCases,
   },
   created() {
     this.all();
@@ -43,17 +45,17 @@ export default {
         .request({
           baseURL: "http://localhost:8000",
           method: "get",
-          url: "/api/books/"
+          url: "/api/work/"
         })
         .then(response => {
-          this.books = response.data
+          this.casos = response.data
           console.log(response)
         });
     },
-    deleteBook(book) {
-      if (confirm("Excluir " + book.name)) {
+    deleteCases(caso) {
+      if (confirm("Excluir " + caso.name)) {
         axios
-          .delete(`http://localhost:8000/api/books/${book.id}`, {
+          .delete(`http://localhost:8000/api/cases/${caso.id}`, {
             headers: {
               Authorization: `Token ${this.$session.get("token")}`
             }
@@ -64,8 +66,8 @@ export default {
           });
       }
     },
-    editBook(book) {
-      router.push(`/books/edit/${book.id}`)
+    editCases(caso) {
+      router.push(`/cases/edit/${caso.id}`)
     }
   }
 };

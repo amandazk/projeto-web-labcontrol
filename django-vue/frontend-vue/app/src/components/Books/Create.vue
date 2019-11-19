@@ -73,6 +73,7 @@
                 </v-select>
               </v-col>
             </v-row>
+            
           </v-container>
           <small>*informações obrigatórias</small>
         </v-card-text>
@@ -84,6 +85,7 @@
       </v-card>
     </v-dialog>
   </v-row>
+  
 </template>
 <script>
 import axios from "axios"

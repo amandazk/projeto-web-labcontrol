@@ -7,7 +7,13 @@ import Logout from '@/views/Logout'
 import ListBooks from '@/components/Books/List'
 import EditBook from'@/components/Books/Edit'
 import Experiments from '@/components/Experiments'
-//import Cases from '@/components/Work/Cases'
+import ListCases from '@/components/Cases/List'
+import CreateCases from '@/components/Cases/Create'
+import EditCases from '@/components/Cases/Edit'
+
+
+
+
 
 Vue.use(Router)
 
@@ -46,14 +52,24 @@ export default new Router({
       component: Experiments
     },
     {
+      path: '/listcases',
+      name: 'ListCases',
+      component: ListCases
+    },
+    //{
+      //path: '/cases/edit/:id',
+      //name: 'EditCases',
+      //component: EditCases
+    // },
+    {
       path: '/cases',
-      name: 'Cases',
-      component: Cases
+      name: 'CreateCases',
+      component: CreateCases
     },
     {
-      path: '/cases/edit/:id',
+      path: '/editcases',
       name: 'EditCases',
       component: EditCases
-    },
+    }
   ]
 })

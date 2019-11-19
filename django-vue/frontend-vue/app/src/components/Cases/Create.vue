@@ -13,42 +13,139 @@
 
       <v-card>
         <v-card-title>
-          <span class="headline">Adicionar Caso</span>
+          <span class="headline">Adicionar Casos</span>
         </v-card-title>
         <v-card-text>
           <v-container>
             <v-row>
               <v-col cols="12">
-                <v-text-field v-model="caso.name" label="Título*" hint="Título do livro" required></v-text-field>
+                <v-text-field v-model="caso.name" label="Caso*" hint="Título do caso" required></v-text-field>
+              </v-col>
+              <v-row class="form-group" v-for="(input,k) in cases" :key="k">
+                
+              <v-col cols="7">
+                <v-select
+                  :items = "cases"
+                  item-value = "id"
+                  item-text = "name"
+                  label = "Cases"
+                  attach
+                  single-line
+                  v-model = "input.cases"
+                >
+                </v-select>
+              </v-col>
+              <v-col cols="4">
+                <v-select
+                  :items = "roles"
+                  item-value = "id"
+                  item-text = "role"
+                  label = "Role"
+                  attach
+                  single-line
+                  v-model="input.role"
+                >
+                </v-select>
+              </v-col>
+              <v-col cols="1">
+                    <v-icon 
+                      @click="addcase(k)"
+                    >mdi-plus</v-icon>
+                    <v-icon 
+                      @click="removecase(k)"
+                      v-show="k || ( !k && cases.length > 1)">
+                       mdi-minus
+                    </v-icon>
+              </v-col>
+              </v-row>
+              <v-col cols="12">
+                <v-text-field v-model="caso.description" label="Descrição*" type="text" required></v-text-field>
+              </v-col>
+              <v-col cols="12">
+                <v-select
+                  :items = "genres"
+                  item-value = "id"
+                  item-text = "name"
+                  label = "Gênero"
+                  attach
+                  v-model = "book.genre"
+                >
+                </v-select>
               </v-col>
             </v-row>
+            
           </v-container>
           <small>*informações obrigatórias</small>
         </v-card-text>
         <v-card-actions>
           <div class="flex-grow-1"></div>
-          <v-btn color="blue darken-1" text @click="dialog = false">Fechar</v-btn>
-          <v-btn color="blue darken-1" text @click="add()">Salvar</v-btn>
+          <v-btn color="green" text @click="dialog = false">Fechar</v-btn>
+          <v-btn color="green" text @click="add()">Salvar</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
   </v-row>
+  
 </template>
 <script>
 import axios from "axios"
 export default {
-  name: "CreateList",
+  name: "CreateCases",
   data() {
     return {
       dialog: false,
-      caso: {},
+      genres: [],
+      authors: [],
+      book: {},
+      bookauthors: [{
+        author: "",
+        role: 0
+      }]
     };
   },
+  created() {
+    this.getGenres()
+    this.getAuthors()
+  },
   methods: {
+    addauthor(index) {
+      this.bookauthors.push({ name: '', role: ''});
+    },
+    removeauthor(index) {
+      this.bookauthors.splice(index, 1);
+    },
+    getGenres() {
+      axios
+      .request({
+        baseURL: "http://localhost:8000",
+        method: "get",
+        url: "/api/genres/"
+      })
+      .then(response => {
+        this.genres = response.data
+        console.log(response)
+      });
+    },
+    getRoles() {
+
+    },
+    getAuthors() {
+      axios
+      .request({
+        baseURL: "http://localhost:8000",
+        method: "get",
+        url: "/api/authors/"
+      })
+      .then(response => {
+        this.authors = response.data
+        console.log(response)
+      });
+    },
     add() {
+      this.book.authors = this.bookauthors
       axios
         .post("http://localhost:8000/api/work/add/",
-          this.caso, 
+          this.book, 
           {
             headers: {
               Authorization: `Token ${this.$session.get("token")}`
