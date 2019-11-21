@@ -2,7 +2,9 @@
   <v-container>
       <div v-for="machine in machines" v-bind:key="machine.id">
         <p>{{machine.name}}</p>
+        <v-divider></v-divider>
       </div>
+
   </v-container>
 </template>
 
@@ -18,14 +20,16 @@ export default {
       machines: [],
     };
   },
-  
+  created() {
+    this.all();
+  },
   methods: {
     all() {
       axios
         .request({
           baseURL: "http://localhost:8000",
           method: "get",
-          url: "/api/machines/"
+          url: "/api/work/machines"
         })
         .then(response => {
           this.machines = response.data

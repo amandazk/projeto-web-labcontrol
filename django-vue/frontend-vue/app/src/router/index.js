@@ -10,6 +10,7 @@ import Experiments from '@/components/Experiments'
 import ListCases from '@/components/Cases/List'
 import CreateCases from '@/components/Cases/Create'
 import EditCases from '@/components/Cases/Edit'
+import ListMachines from '@/components/Machines/List'
 
 
 
@@ -70,6 +71,11 @@ export default new Router({
       path: '/editcases',
       name: 'EditCases',
       component: EditCases
+    },
+    {
+      path: '/machines',
+      name: 'ListMachines',
+      component: ListMachines
     }
   ]
 })
