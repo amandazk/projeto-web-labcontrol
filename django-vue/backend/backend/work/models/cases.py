@@ -2,9 +2,6 @@ from django.db import models
 from django.db.models.fields import DateTimeField
 
 class Case(models.Model):
-    name = models.CharField(max_length=200)
-    created = models.DateTimeField(auto_now_add=True)
-    description = models.TextField() #descrição detalhada caso necessário
     problem = models.ForeignKey(
         'Problem',
         related_name="cases",
@@ -19,4 +16,13 @@ class Case(models.Model):
     )
 
     def __str__(self):
-        return self.name
+        return str((self.problem,self.machine))
+    
+    @property
+    def problemname(self):
+        return str(self.problem.problem)
+
+    @property
+    def machinename(self):
+        return str(self.machine.name)
+    

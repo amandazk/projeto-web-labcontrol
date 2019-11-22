@@ -68,7 +68,7 @@ export default {
         .request({
           baseURL: "http://localhost:8000",
           method: "get",
-          url: `/api/cases/get/${this.$route.params.id}/`
+          url: `/api/work/get/${this.$route.params.id}/`
         })
         .then(res => {
           this.caso = res.data

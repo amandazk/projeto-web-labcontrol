@@ -1,11 +1,8 @@
 <template>
   <v-container>
       <div v-for="caso in casos" v-bind:key="caso.id">
-        <p>{{caso.name}}</p>
-        <p>{{caso.created}}</p>
-        <p>{{caso.description}}</p>
-        <p>{{caso.problem}}</p>
-        <p>{{caso.machine}}</p>
+        <p>{{caso.problemname}}</p>
+        <p>{{caso.machinename}}</p>
 
         
         <v-btn class="ma-2" text icon color="red lighten-2">

@@ -3,7 +3,7 @@ from django.db.models.fields import DateTimeField
 
 
 class Problem(models.Model):
-    name = models.CharField(max_length=200)
-
+    problem = models.CharField(max_length=200)
+    description = models.CharField(max_length=500)
     def __str__(self):
-        return self.name
+        return self.problem

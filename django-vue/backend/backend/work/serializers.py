@@ -4,18 +4,17 @@ from work.models import (Case, Machine, Problem)
 class CaseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Case
-        fields = (
-            '__all__')
+        fields = ('id','problem','machine','problemname','machinename')
 
 
 class MachineSerializer(serializers.ModelSerializer):
     class Meta:
         model = Machine
         fields = (
-            'id', 'name')
+            '__all__')
 
 class ProblemSerializer(serializers.ModelSerializer):
     class Meta:
         model = Problem
         fields = (
-            'id', 'name')
+            '__all__')

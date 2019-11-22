@@ -35,18 +35,6 @@
                 >
                 </v-select>
               </v-col>
-              <v-col cols="4">
-                <v-select
-                  :items = "roles"
-                  item-value = "id"
-                  item-text = "role"
-                  label = "Role"
-                  attach
-                  single-line
-                  v-model="input.role"
-                >
-                </v-select>
-              </v-col>
               <v-col cols="1">
                     <v-icon 
                       @click="addcase(k)"
