@@ -87,12 +87,12 @@ export default {
           }
         )
         .then(res => {
-          route.push('/cases/')
+          route.push('/work/')
           console.log(res)
         });
     },
     clear () {
-      route.push('/cases/')
+      route.push('/work/')
     },
   }
 }

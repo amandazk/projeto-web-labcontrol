@@ -14,6 +14,19 @@
         <v-divider></v-divider>
       </div>
       <CreateCases @updateCases="all"></CreateCases>
+
+    <!-- <v-card>
+    <v-card-title>
+      <h4>Casos</h4>
+      <v-spacer></v-spacer>
+    </v-card-title>
+    <v-data-table
+      :headers="headers"
+      :items="machines.name"
+    ></v-data-table>
+  </v-card> -->
+
+
   </v-container>
 </template>
 
