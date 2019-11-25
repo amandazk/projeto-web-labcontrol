@@ -21,47 +21,47 @@
               <v-col cols="12">
                 <v-text-field v-model="caso.name" label="Caso*" hint="Título do caso" required></v-text-field>
               </v-col>
-              <v-row class="form-group" v-for="(input,k) in cases" :key="k">
-                
+              <v-row class="form-group" v-for="(input,k) in caso" :key="k">
+
               <v-col cols="7">
                 <v-select
-                  :items = "cases"
+                  :items = "problem"
                   item-value = "id"
                   item-text = "name"
-                  label = "Cases"
+                  label = "Problems"
                   attach
                   single-line
-                  v-model = "input.cases"
+                  v-model = "caso.problem"
                 >
                 </v-select>
               </v-col>
               <v-col cols="1">
-                    <v-icon 
+                    <v-icon
                       @click="addcase(k)"
                     >mdi-plus</v-icon>
-                    <v-icon 
+                    <v-icon
                       @click="removecase(k)"
-                      v-show="k || ( !k && cases.length > 1)">
+                      v-show="k || ( !k && caso.length > 1)">
                        mdi-minus
                     </v-icon>
               </v-col>
               </v-row>
-              <v-col cols="12">
+              <!-- <v-col cols="12">
                 <v-text-field v-model="caso.description" label="Descrição*" type="text" required></v-text-field>
-              </v-col>
+              </v-col> -->
               <v-col cols="12">
                 <v-select
-                  :items = "genres"
+                  :items = "machine"
                   item-value = "id"
                   item-text = "name"
-                  label = "Gênero"
+                  label = "Machine"
                   attach
-                  v-model = "book.genre"
+                  v-model = "caso.machine"
                 >
                 </v-select>
               </v-col>
             </v-row>
-            
+
           </v-container>
           <small>*informações obrigatórias</small>
         </v-card-text>
@@ -73,7 +73,7 @@
       </v-card>
     </v-dialog>
   </v-row>
-  
+
 </template>
 <script>
 import axios from "axios"
@@ -82,70 +82,69 @@ export default {
   data() {
     return {
       dialog: false,
-      genres: [],
-      authors: [],
-      book: {},
-      bookauthors: [{
-        author: "",
-        role: 0
-      }]
+      caso: [{
+        problem: "",
+        machine: " "
+      }],
+      machine: [],
+      problem: []
     };
   },
   created() {
-    this.getGenres()
-    this.getAuthors()
+    this.getCases()
+    // this.getAuthors()
   },
   methods: {
-    addauthor(index) {
-      this.bookauthors.push({ name: '', role: ''});
+    addcases(index) {
+      this.caso.push({ problem: '', machine: ''});
     },
-    removeauthor(index) {
-      this.bookauthors.splice(index, 1);
+    removecases(index) {
+      this.caso.splice(index, 1);
     },
-    getGenres() {
+    getCases() {
       axios
       .request({
         baseURL: "http://localhost:8000",
         method: "get",
-        url: "/api/genres/"
+        url: "/api/work/"
       })
       .then(response => {
-        this.genres = response.data
+        this.caso = response.data
         console.log(response)
       });
-    },
-    getRoles() {
+    // },
+    // getRoles() {
 
-    },
-    getAuthors() {
-      axios
-      .request({
-        baseURL: "http://localhost:8000",
-        method: "get",
-        url: "/api/authors/"
-      })
-      .then(response => {
-        this.authors = response.data
-        console.log(response)
-      });
-    },
-    add() {
-      this.book.authors = this.bookauthors
-      axios
-        .post("http://localhost:8000/api/work/add/",
-          this.book, 
-          {
-            headers: {
-              Authorization: `Token ${this.$session.get("token")}`
-            }
-          }
-        )
-        .then(response => {
-          this.dialog = false
-          this.$emit('updateCases')
-          this.log.console(response)
-        });
+    // },
+    // getAuthors() {
+    //   axios
+    //   .request({
+    //     baseURL: "http://localhost:8000",
+    //     method: "get",
+    //     url: "/api/authors/"
+    //   })
+    //   .then(response => {
+    //     this.authors = response.data
+    //     console.log(response)
+    //   });
+//         },
+//     add() {
+//       this.book.authors = this.bookauthors
+//       axios
+//         .post("http://localhost:8000/api/work/add/",
+//           this.book,
+//           {
+//             headers: {
+//               Authorization: `Token ${this.$session.get("token")}`
+//             }
+//           }
+//         )
+//         .then(response => {
+//           this.dialog = false
+//           this.$emit('updateCases')
+//           this.log.console(response)
+//         });
     }
-  }
-};
+   }
+  };
 </script>

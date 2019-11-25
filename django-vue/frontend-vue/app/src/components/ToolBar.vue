@@ -3,7 +3,7 @@
     <v-app-bar-nav-icon 
       @click.stop="$emit('toggle-drawer')"
     > </v-app-bar-nav-icon>    
-    <v-toolbar-title>Estágio - ACE</v-toolbar-title>
+    <v-toolbar-title>LabControl</v-toolbar-title>
   </v-app-bar>
 </template>
 

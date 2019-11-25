@@ -13,7 +13,7 @@
       <v-text-field
         v-model="search"
         append-icon="search"
-        label="Search"
+        label="Pesquisa"
         single-line
         hide-details
       ></v-text-field>
@@ -77,6 +77,4 @@ export default {
     },
   }
 };
-
-
 </script>
