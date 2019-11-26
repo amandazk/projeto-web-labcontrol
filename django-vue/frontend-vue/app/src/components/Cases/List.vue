@@ -1,58 +1,55 @@
+      
 <template>
-  <v-container>
-      <!-- <div v-for="caso in casos" v-bind:key="caso.id">
-        <p>{{caso.problemname}}</p>
-        <p>{{caso.machinename}}</p> -->
+  <div>
+    <p></p>
+    <h4>Problemas do Lab</h4>
+    <v-simple-table
+      :dense="dense"
+      :fixed-header="fixedHeader"
+      :height="height"
+    >
+      <template v-slot:default>
+        <thead>
+          <tr>
+            <th class="text-left">Problema</th>
+            <th class="text-left">Máquina</th>
+          </tr>
+        </thead>
+        <tbody>
 
-    <v-card>
-    <v-card-title>
-      <h4>Problemas do Lab</h4>
-      <v-spacer></v-spacer>
-      <v-text-field
-        v-model="search"
-        append-icon="search"
-        label="Pesquisa"
-        single-line
-        hide-details
-      ></v-text-field>
-    </v-card-title>
-    <v-data-table :headers="headers" :items="problemname" :search="search">
-      <template v-slot:items="props">
-        <td>{{ props.item.name }}</td>
-        <td class="text-xs-right">{{ props.item.problemname }}</td>
-        <td class="text-xs-right">{{ props.item.machines }}</td>
-        <!-- <td class="text-xs-right">{{ props.item.fat }}</td>
-        <td class="text-xs-right">{{ props.item.carbs }}</td>
-        <td class="text-xs-right">{{ props.item.protein }}</td>
-        <td class="text-xs-right">{{ props.item.iron }}</td> -->
+          <tr v-for="caso in casos" v-bind:key="caso.id">
+            <td>{{caso.problemname}}</td>
+            <td>{{caso.machinename}}</td>
+          </tr>
+
+        </tbody>
       </template>
-      <!-- <template v-slot:pageText="props">
-      ITEMS {{ props.pageStart }} - {{ props.pageStop }} OF {{ props.itemsLength }} // Edit this
-      // ^this is what you need
-      </template> -->
-    </v-data-table>
-  </v-card>
+    </v-simple-table>
 
+    <!-- <v-row>
+      <v-col cols="12" md="6">
+        <v-text-field
+          v-model="height"
+          class="mx-4"
+          label="Height - px"
+          max="500"
+          min="1"
+          step="1"
+          style="width: 125px"
+          type="number"
+          @keydown="false"
+        ></v-text-field>
+      </v-col>
+    </v-row> -->
 
-        
-        <!-- <v-btn class="ma-2" text icon color="red lighten-2">
-          <v-icon class="delete" @click="deleteCase(caso)"></v-icon>
-        </v-btn>
-        <v-btn class="ma-2" text icon color="green">
-          <v-icon class="edit" @click="editCase(caso)"></v-icon>
-        </v-btn>
-        <v-divider></v-divider>
-      </div>
-      <CreateCases @updateCases="all"></CreateCases> -->
-
-
-
-  </v-container>
+   <CreateCases @updateCases="all"></CreateCases>
+  </div>
 </template>
 <style>
   h4{
-    text-align:center;
+    text-align:left;
     color:#6b6b47;
+    font-size: 20px;
     };
 
 </style>

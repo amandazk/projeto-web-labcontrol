@@ -11,6 +11,6 @@ urlpatterns = [
     url(r'work/get/(?P<pk>\d+)/$', CaseGet.as_view()),
     url(r'work/edit/(?P<pk>\d+)/$', CaseUpdate.as_view()),
     url(r'work/machines/$', MachineList.as_view()),
-    url(r'work/$', ProblemList.as_view())
+    url(r'work/problem/$', ProblemList.as_view())
 
 ]

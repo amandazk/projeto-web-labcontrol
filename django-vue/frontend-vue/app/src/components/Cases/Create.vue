@@ -19,15 +19,10 @@
           <v-container>
             <v-row>
               <v-col cols="12">
-                <v-text-field v-model="caso.name" label="Caso*" hint="Título do caso" required></v-text-field>
-              </v-col>
-              <v-row class="form-group" v-for="(input,k) in caso" :key="k">
-
-              <v-col cols="7">
                 <v-select
-                  :items = "problem"
+                  :items = "problems"
                   item-value = "id"
-                  item-text = "name"
+                  item-text = "problem"
                   label = "Problems"
                   attach
                   single-line
@@ -35,23 +30,9 @@
                 >
                 </v-select>
               </v-col>
-              <v-col cols="1">
-                    <v-icon
-                      @click="addcase(k)"
-                    >mdi-plus</v-icon>
-                    <v-icon
-                      @click="removecase(k)"
-                      v-show="k || ( !k && caso.length > 1)">
-                       mdi-minus
-                    </v-icon>
-              </v-col>
-              </v-row>
-              <!-- <v-col cols="12">
-                <v-text-field v-model="caso.description" label="Descrição*" type="text" required></v-text-field>
-              </v-col> -->
               <v-col cols="12">
                 <v-select
-                  :items = "machine"
+                  :items = "machines"
                   item-value = "id"
                   item-text = "name"
                   label = "Machine"
@@ -82,68 +63,55 @@ export default {
   data() {
     return {
       dialog: false,
-      caso: [{
-        problem: "",
-        machine: " "
-      }],
-      machine: [],
-      problem: []
+      caso: {},
+      machines: [],
+      problems: []
     };
   },
   created() {
-    this.getCases()
-    // this.getAuthors()
+    this.getProblems()
+    this.getMachines()
   },
   methods: {
-    addcases(index) {
-      this.caso.push({ problem: '', machine: ''});
-    },
-    removecases(index) {
-      this.caso.splice(index, 1);
-    },
-    getCases() {
+    getProblems() {
       axios
       .request({
         baseURL: "http://localhost:8000",
         method: "get",
-        url: "/api/work/"
+        url: "/api/work/problem/"
       })
       .then(response => {
-        this.caso = response.data
+        this.problems = response.data
         console.log(response)
       });
-    // },
-    // getRoles() {
-
-    // },
-    // getAuthors() {
-    //   axios
-    //   .request({
-    //     baseURL: "http://localhost:8000",
-    //     method: "get",
-    //     url: "/api/authors/"
-    //   })
-    //   .then(response => {
-    //     this.authors = response.data
-    //     console.log(response)
-    //   });
-//         },
-//     add() {
-//       this.book.authors = this.bookauthors
-//       axios
-//         .post("http://localhost:8000/api/work/add/",
-//           this.book,
-//           {
-//             headers: {
-//               Authorization: `Token ${this.$session.get("token")}`
-//             }
-//           }
-//         )
-//         .then(response => {
-//           this.dialog = false
-//           this.$emit('updateCases')
-//           this.log.console(response)
-//         });
+    },
+    getMachines() {
+      axios
+      .request({
+        baseURL: "http://localhost:8000",
+        method: "get",
+        url: "/api/work/machines/"
+      })
+      .then(response => {
+        this.machines = response.data
+        console.log(response)
+      });
+    },
+     add() {
+       axios
+         .post("http://localhost:8000/api/work/add/",
+           this.caso,
+           {
+             headers: {
+               Authorization: `Token ${this.$session.get("token")}`
+             }
+           }
+         )
+         .then(response => {
+           this.dialog = false
+           this.$emit('updateCases')
+           this.log.console(response)
+         });
     }
    }
   };

@@ -63,11 +63,6 @@ export default new Router({
       //component: EditCases
     // },
     {
-      path: '/cases',
-      name: 'CreateCases',
-      component: CreateCases
-    },
-    {
       path: '/editcases',
       name: 'EditCases',
       component: EditCases

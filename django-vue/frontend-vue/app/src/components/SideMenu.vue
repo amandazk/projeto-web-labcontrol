@@ -58,7 +58,7 @@ export default {
         // { title: "Users", icon: "mdi-account-group", endpoint: '/users' },
         // { title: "Books", icon: "mdi-library-books", endpoint: '/books'},
         // { title: "Experiments", icon: "mdi-chart-pie", endpoint: '/experiments'},
-        { title: "Visualizar Casos", icon: "mdi-folder-lock", endpoint: '/listcases'},
+        { title: "Casos", icon: "mdi-folder-lock", endpoint: '/listcases'},
         { title: "Máquinas", icon: "mdi-laptop-windows", endpoint: '/machines'}
 
 
@@ -66,7 +66,7 @@ export default {
       ],
       items_logged: [
         { title: "Logout", icon: "mdi-logout", endpoint: '/logout'},
-        { title: "Adicionar Casos", icon: "mdi-clippy", endpoint: '/cases'}
+        // { title: "Adicionar Casos", icon: "mdi-clippy", endpoint: '/cases'}
       ]
     };
   },
