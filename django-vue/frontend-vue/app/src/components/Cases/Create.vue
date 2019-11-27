@@ -4,7 +4,7 @@
       <template v-slot:activator="{ on }">
         <v-card-text>
           <v-fab-transition>
-            <v-btn primary v-on="on" dark relative fixed bottom right fab>
+            <v-btn green v-on="on" dark relative fixed bottom right fab>
               <v-icon>mdi-plus</v-icon>
             </v-btn>
           </v-fab-transition>
@@ -112,7 +112,10 @@ export default {
            this.$emit('updateCases')
            this.log.console(response)
          });
-    }
-   }
+    },
+  }
   };
 </script>
+
+
+

@@ -2,7 +2,7 @@
 <template>
   <div>
     <p></p>
-    <h4>Problemas do Lab</h4>
+    <v-col cols="12"><h4>Problemas do Lab</h4></v-col>
     <v-simple-table
       :dense="dense"
       :fixed-header="fixedHeader"
@@ -64,6 +64,7 @@ export default {
   name: "ListCases",
   data() {
     return {
+      authenticated: false,
       casos: [],
       problemname: [],
       machines: [],
@@ -83,6 +84,9 @@ export default {
         },
       ],
     };
+  },
+  mounted() {
+    this.checkAuthenticated();
   },
   components: {
     CreateCases: CreateCases, 
@@ -119,6 +123,14 @@ export default {
     },
     editCase(caso) {
       router.push(`/listcases/edit/${caso.id}`)
+    },
+    checkAuthenticated() {
+      this.$session.start();
+      if (!this.$session.has("token")) {
+        router.push("/login");
+      } else {
+        this.authenticated = true;
+      }
     }
   }
 };

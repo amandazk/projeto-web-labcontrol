@@ -47,6 +47,7 @@ export default {
   name: "ListMachines",
   data() {
     return {
+      authenticated: false,
       machines: [],
       search: '',
       headers: [
@@ -62,6 +63,9 @@ export default {
   created() {
     this.all();
   },
+  mounted() {
+    this.checkAuthenticated();
+  },
   methods: {
     all() {
       axios
@@ -75,6 +79,14 @@ export default {
           console.log(response)
         });
     },
+    checkAuthenticated() {
+      this.$session.start();
+      if (!this.$session.has("token")) {
+        router.push("/login");
+      } else {
+        this.authenticated = true;
+      }
+  }
   }
 };
 </script>

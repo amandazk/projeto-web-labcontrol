@@ -20,7 +20,8 @@
       </div>
     </div>
   </div>
-  <v-row align="center" justify="center">
+
+  <!-- <v-row align="center" justify="center">
     <v-img
       src="https://img.ibxk.com.br/2016/12/16/16184004311314.jpg?w=1120&h=420&mode=crop&scale=both"
       aspect-ratio="1"
@@ -28,8 +29,16 @@
       max-width="500"
       max-height="300"
     ></v-img>
-  </v-row>
-          
+  </v-row> -->
+
+  <!-- <v-carousel hide-delimiters>
+    <v-carousel-item
+      v-for="(item,i) in items"
+      :key="i"
+      :src="item.src"
+    ></v-carousel-item>
+  </v-carousel> -->
+
   </section>
 
    
@@ -46,7 +55,6 @@
 </style>
 
 
-      
 <script>
 import router from "../router";
 
@@ -71,4 +79,6 @@ export default {
     }
   }
 };
+
 </script>
+
