@@ -1,7 +1,7 @@
 from django.conf.urls import url
 
 from .views import (
-    CaseList, CaseDestroy, CaseUpdate, CaseCreate, CaseGet, MachineList, ProblemList
+    CaseList, CaseDestroy, CaseUpdate, CaseCreate, CaseGet, MachineList, ProblemList, ProblemCreate
 )
 
 urlpatterns = [
@@ -11,6 +11,8 @@ urlpatterns = [
     url(r'work/get/(?P<pk>\d+)/$', CaseGet.as_view()),
     url(r'work/edit/(?P<pk>\d+)/$', CaseUpdate.as_view()),
     url(r'work/machines/$', MachineList.as_view()),
-    url(r'work/problem/$', ProblemList.as_view())
+    url(r'work/problem/$', ProblemList.as_view()),
+    url(r'work/problem/add/$', ProblemCreate.as_view())
+
 
 ]

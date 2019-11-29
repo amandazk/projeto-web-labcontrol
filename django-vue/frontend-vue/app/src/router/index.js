@@ -11,6 +11,7 @@ import ListCases from '@/components/Cases/List'
 import CreateCases from '@/components/Cases/Create'
 import EditCases from '@/components/Cases/Edit'
 import ListMachines from '@/components/Machines/List'
+import ListProblems from '@/components/Problems/List'
 
 
 
@@ -71,6 +72,11 @@ export default new Router({
       path: '/machines',
       name: 'ListMachines',
       component: ListMachines
+    },
+    {
+      path: '/problem',
+      name: 'ListProblems',
+      component: ListProblems
     }
   ]
 })

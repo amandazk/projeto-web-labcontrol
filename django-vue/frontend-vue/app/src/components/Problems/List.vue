@@ -1,33 +1,13 @@
 <template>
   <v-container>
       <!-- Mostrando sem a tabela -->
-      <!-- <div v-for="machine in machines" v-bind:key="machine.id">
-        <p>{{machine.name}}</p>
+      <div v-for="problem in problems" v-bind:key="problem.id">
+        <p>Problema: {{problem.problem}}</p>
+        <p>Descrição: {{problem.description}}</p>
         <v-divider></v-divider>
-      </div> -->
+      </div>
 
-  
-  <v-card>
-    <v-card-title>
-      <h4>Máquinas do Lab</h4>
-      <v-spacer></v-spacer>
-      <v-text-field
-        v-model="search"
-        append-icon="search"
-        label="Pesquisa"
-        single-line
-        hide-details
-      ></v-text-field>
-    </v-card-title>
-    <v-data-table :headers="headers" :items="machines" :search="search">
-      <template v-slot:items="props">
-        <td>{{ props.item.name }}</td>
-        <td class="text-xs-right">{{ props.item.machines }}</td>
-      </template>
-    </v-data-table>
-  </v-card>
-
-
+    <CreateProblem @updateProblem="all"></CreateProblem>
   </v-container>
 </template>
 
@@ -35,13 +15,15 @@
 <script>
 import axios from "axios";
 import router from "@/router/"
+import CreateProblem from "./Create";
+
 
 export default {
-  name: "ListMachines",
+  name: "ListProblems",
   data() {
     return {
       authenticated: false,
-      machines: [],
+      problems: [],
       search: '',
       headers: [
         {
@@ -59,16 +41,19 @@ export default {
   mounted() {
     this.checkAuthenticated();
   },
+  components: {
+        CreateProblem: CreateProblem,
+  },
   methods: {
     all() {
       axios
         .request({
           baseURL: "http://localhost:8000",
           method: "get",
-          url: "/api/work/machines"
+          url: "/api/work/problem"
         })
         .then(response => {
-          this.machines = response.data
+          this.problems = response.data
           console.log(response)
         });
     },

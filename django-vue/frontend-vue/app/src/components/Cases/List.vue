@@ -1,4 +1,4 @@
-      
+
 <template>
   <div>
     <p></p>
@@ -20,27 +20,19 @@
           <tr v-for="caso in casos" v-bind:key="caso.id">
             <td>{{caso.problemname}}</td>
             <td>{{caso.machinename}}</td>
+            <v-btn class="ma-2" text icon color="green">
+              <v-icon class="edit" @click="editCase(caso)"></v-icon>
+           </v-btn>
+            <v-btn class="ma-2" text icon color="red lighten-2">
+              <v-icon class="delete" @click="deleteCase(caso)"></v-icon>
+           </v-btn>
           </tr>
+
+
 
         </tbody>
       </template>
     </v-simple-table>
-
-    <!-- <v-row>
-      <v-col cols="12" md="6">
-        <v-text-field
-          v-model="height"
-          class="mx-4"
-          label="Height - px"
-          max="500"
-          min="1"
-          step="1"
-          style="width: 125px"
-          type="number"
-          @keydown="false"
-        ></v-text-field>
-      </v-col>
-    </v-row> -->
 
    <CreateCases @updateCases="all"></CreateCases>
   </div>

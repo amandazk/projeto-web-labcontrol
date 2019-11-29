@@ -59,7 +59,8 @@ export default {
         // { title: "Books", icon: "mdi-library-books", endpoint: '/books'},
         // { title: "Experiments", icon: "mdi-chart-pie", endpoint: '/experiments'},
         { title: "Casos", icon: "mdi-folder-lock", endpoint: '/listcases'},
-        { title: "Máquinas", icon: "mdi-laptop-windows", endpoint: '/machines'}
+        { title: "Máquinas", icon: "mdi-laptop-windows", endpoint: '/machines'},
+        { title: "Problemas", icon: "mdi-alert-circle", endpoint: '/problem'}
 
 
 

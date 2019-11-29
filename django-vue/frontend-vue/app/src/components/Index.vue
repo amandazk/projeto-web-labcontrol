@@ -2,12 +2,6 @@
   <section class="container">
     <h1>LabControl</h1>
     <p></p>
-    <!-- <p>O estágio na instituição ACE é realizado no laboratório de informática e o controle das máquinas é uma 
-      das tarefas executadas. Para isso, esse site cuida do cadastro de problemas que ocorrem e também, quando
-      necessário, do cadastro de novas máquinas.</p> -->
-      <!-- <div class="my-2">
-        <v-btn small color="green" v-if="authenticated">Logout</v-btn>
-      </div> -->
         <div class="row">
           <div class="col s12 m6">
            <div class="card light-green lighten-4">
@@ -20,6 +14,33 @@
       </div>
     </div>
   </div>
+
+
+
+  <v-row align="center" justify="center">
+    <v-img
+      src="https://img.ibxk.com.br/2016/12/16/16184004311314.jpg?w=1120&h=420&mode=crop&scale=both"
+      aspect-ratio="1"
+      class="grey lighten-2"
+      max-width="500"
+      max-height="300"
+    ></v-img>
+  </v-row>
+
+
+  <div class="row">
+          <div class="col s12 m6">
+           <div class="card light-green lighten-4">
+            <div class="card-content">
+            <p></p>
+            <p> * O próximo passo será criar uma área para cadastrar novos problemas e também botões para editar
+              e excluir os casos já existentes. 
+            </p>
+          </div>
+      </div>
+    </div>
+  </div>
+
 
   <!-- <v-row align="center" justify="center">
     <v-img
