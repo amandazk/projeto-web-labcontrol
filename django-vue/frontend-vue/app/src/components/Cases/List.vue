@@ -2,7 +2,7 @@
 <template>
   <div>
     <p></p>
-    <v-col cols="12"><h4>Problemas do Lab</h4></v-col>
+    <v-col cols="12"><h4>Problemas do Lab por Máquina</h4></v-col>
     <v-simple-table
       :dense="dense"
       :fixed-header="fixedHeader"
@@ -20,9 +20,9 @@
           <tr v-for="caso in casos" v-bind:key="caso.id">
             <td>{{caso.problemname}}</td>
             <td>{{caso.machinename}}</td>
-            <v-btn class="ma-2" text icon color="green">
+            <!-- <v-btn class="ma-2" text icon color="green">
               <v-icon class="edit" @click="editCase(caso)"></v-icon>
-           </v-btn>
+           </v-btn> -->
             <v-btn class="ma-2" text icon color="red lighten-2">
               <v-icon class="delete" @click="deleteCase(caso)"></v-icon>
            </v-btn>

@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <h1>Edit Case Info</h1>
+    <h1>Edit Book Info</h1>
     <form>
       <v-text-field
         v-model="book.name"
@@ -18,6 +18,14 @@
         required
         @input="$v.book.author.$touch()"
         @blur="$v.book.author.$touch()"
+      ></v-text-field>
+      <v-text-field
+        v-model="book.description"
+        :error-messages="descriptionErrors"
+        label="Description"
+        required
+        @input="$v.book.description.$touch()"
+        @blur="$v.book.description.$touch()"
       ></v-text-field>
       <v-btn class="mr-4" @click="submit">Submit</v-btn>
       <v-btn @click="clear">Clear</v-btn>

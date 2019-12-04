@@ -1,9 +1,12 @@
 <template>
   <v-container>
       <!-- Mostrando sem a tabela -->
+      <p></p>
+      <h4>Problemas</h4>
+      <p></p>
       <div v-for="problem in problems" v-bind:key="problem.id">
-        <p>Problema: {{problem.problem}}</p>
-        <p>Descrição: {{problem.description}}</p>
+        <p><b>Problema:</b> {{problem.problem}}</p>
+        <p><b>Descrição:</b> {{problem.description}}</p>
         <v-divider></v-divider>
       </div>
 
